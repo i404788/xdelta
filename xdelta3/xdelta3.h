@@ -38,6 +38,8 @@
 #include <string.h>
 #include <sys/types.h>
 
+#define STATIC_ASSERT(COND,MSG) typedef char static_assertion_##MSG[(!!(COND))*2-1]
+
 /****************************************************************/
 
 /* Default configured value of stream->winsize.  If the program
@@ -167,8 +169,8 @@ typedef ULONGLONG      uint64_t;
 #define _FILE_OFFSET_BITS 64
 #endif
 
-static_assert(SIZEOF_SIZE_T == sizeof(size_t), "SIZEOF_SIZE_T not correctly set");
-static_assert(SIZEOF_UNSIGNED_LONG_LONG == sizeof(unsigned long long), "SIZEOF_UNSIGNED_LONG_LONG not correctly set");
+STATIC_ASSERT(SIZEOF_SIZE_T == sizeof(size_t), SIZEOF_SIZE_T_not_correctly_set);
+STATIC_ASSERT(SIZEOF_UNSIGNED_LONG_LONG == sizeof(unsigned long long), SIZEOF_UNSIGNED_LONG_LONG_not_correctly_set);
 
 /* Set a xoff_t typedef and the "Q" printf insert. */
 #if defined(_WIN32)
