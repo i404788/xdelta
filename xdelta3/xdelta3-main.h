@@ -2100,7 +2100,13 @@ main_merge_output (xd3_stream *stream, main_file *ofile)
  */
 
 #include <signal.h>
+#if XD3_WIN32
+#include <io.h>
+#include <process.h>
+#else
 #include <unistd.h>
+#endif
+
 #include <sys/stat.h>
 #include <sys/wait.h>
 
