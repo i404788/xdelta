@@ -2082,7 +2082,7 @@ main_merge_output (xd3_stream *stream, main_file *ofile)
  Input decompression, output recompression
  ******************************************************************/
 
-#if EXTERNAL_COMPRESSION
+#if EXTERNAL_COMPRESSION && XD3_POSIX
 /* This is tricky POSIX-specific code with lots of fork(), pipe(),
  * dup(), waitpid(), and exec() business.  Most of this code
  * originated in PRCS1, which did automatic package-file
@@ -2103,6 +2103,7 @@ main_merge_output (xd3_stream *stream, main_file *ofile)
 #if XD3_WIN32
 #include <io.h>
 #include <process.h>
+// Could be ported with https://github.com/win32ports/sys_wait_h et al.
 #else
 #include <unistd.h>
 #endif
