@@ -56,6 +56,11 @@
 #endif
 
 #ifdef _WIN32 
+// Disable external compression on win32 (for now)
+#if EXTERNAL_COMPRESSION
+#undef EXTERNAL_COMPRESSION
+#define EXTERNAL_COMPRESSION 0
+#endif
 #ifndef XD3_WIN32
 #define XD3_WIN32 1 
 #endif
