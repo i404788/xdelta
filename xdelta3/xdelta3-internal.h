@@ -94,9 +94,15 @@ typedef enum
 #ifndef XD3_STDIO
 #define XD3_STDIO 0
 #endif
+
+#ifdef _WIN32 
 #ifndef XD3_WIN32
+#define XD3_WIN32 1 
+#endif
+#else
 #define XD3_WIN32 0
 #endif
+
 #ifndef NOT_MAIN
 #define NOT_MAIN 0
 #endif
