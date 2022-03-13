@@ -137,7 +137,18 @@
 
 /* _MSV_VER is defined by Microsoft tools, not by Mingw32 */
 #ifdef _MSC_VER
-typedef signed long     ssize_t;
+
+#ifndef _W64
+#define _W64
+#endif
+
+/* Define like size_t, omitting the "unsigned" */
+#ifdef _WIN64
+typedef __int64 ssize_t;
+#else
+typedef _W64 int ssize_t;
+#endif
+
 typedef int pid_t;
 #if _MSC_VER < 1600
 typedef unsigned char  uint8_t;
